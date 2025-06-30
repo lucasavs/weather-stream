@@ -3,6 +3,7 @@ import ws from 'ws';
 import candleStickRoutes from './routes/candleStickRoutes';
 import dotenv from 'dotenv';
 import candlestickService, { cityTemperatureData } from './services/candlestickService';
+import cors from 'cors';
 
 dotenv.config();
 
@@ -32,11 +33,12 @@ wsConnection()
 
 // starting server
 const app: Express = express();
+app.use(cors())
 app.use('/api/v1/candlesticks', candleStickRoutes)
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 }); 

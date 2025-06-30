@@ -17,12 +17,17 @@ export type cityTemperatureData = {
 class CandleStickService {
   async getAllCities() {
     throw new Error('Not Implmented')
-  }
+  } 
 
   async getByCity(cityName: string): Promise<cityCandlestickData> {
-    const cityData = await query('SELECT * FROM city_status WHERE city = $1', [cityName]);
-
-    return cityData.rows
+    const cityData = await query('SELECT * FROM city_status WHERE city = $1 ORDER BY time asc', [cityName]);
+    
+    return cityData.rows.map((row) => {
+      delete row.id;
+      const rowDate = new Date(row.time)
+      row.time = rowDate.toUTCString()
+      return row;
+    })
   }
 
   async addCityData(cityTemperatureData: cityTemperatureData): Promise<void> {
