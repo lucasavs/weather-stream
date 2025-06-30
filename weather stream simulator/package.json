@@ -1,0 +1,16 @@
+{
+  "name": "weather_stream_simulator",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "weather_stream_simulator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node weather_stream_simulator.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.3"
+  }
+}
