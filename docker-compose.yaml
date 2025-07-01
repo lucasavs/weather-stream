@@ -1,0 +1,23 @@
+services:
+  weather-back:
+    depends_on:
+      - database
+    build: ./weather-back/
+    ports:
+      - "3001:3001"
+  database:
+    image: postgres:17.5-alpine
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes: 
+      - ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  weather-stream-simulator:
+    build: ./weather-stream-simulator/
+    ports:
+      - "8765:8765"

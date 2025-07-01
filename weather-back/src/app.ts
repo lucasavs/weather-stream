@@ -10,7 +10,8 @@ dotenv.config();
 // Starting connection with the WS client
 const reconnectInterval = 1000 * 60;
 const wsConnection = () => {
-  const wsClient = new ws('ws://localhost:8765');
+  const wsClient = new ws(`ws://${process.env.WEATHERSTREAMHOST}:8765`)
+  // const wsClient = new ws('ws://localhost:8765');
   wsClient.on('open', function() {
     console.log('socket open');
   });

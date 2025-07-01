@@ -1,4 +1,4 @@
-import { query } from '../../db';
+import { query } from '../db';
 
 type cityCandlestickData = {
   openTemperature: number,
@@ -22,6 +22,10 @@ class CandleStickService {
   async getByCity(cityName: string): Promise<cityCandlestickData> {
     const cityData = await query('SELECT * FROM city_status WHERE city = $1 ORDER BY time asc', [cityName]);
     
+    if (!cityData){
+      return []
+    }
+
     return cityData.rows.map((row) => {
       delete row.id;
       const rowDate = new Date(row.time)
