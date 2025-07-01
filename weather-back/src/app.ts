@@ -30,6 +30,8 @@ const wsConnection = () => {
 }
 wsConnection()
 
+// TODO: ADD SOME AUTHENTICANTION SERVICE HERE
+// Exemple: https://www.npmjs.com/package/express-basic-auth
 
 // starting server
 const app: Express = express();
