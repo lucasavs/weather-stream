@@ -21,3 +21,7 @@ services:
     build: ./weather-stream-simulator/
     ports:
       - "8765:8765"
+  weather-front:
+    build: ./weather-front/
+    ports:
+      - "3000:3000"
