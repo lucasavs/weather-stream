@@ -22,3 +22,5 @@ Simply run docker compose up, and all the systems will go online. You can check 
 - The front end does not know how to handle empty data and the graph gets confused.
 - Need to add auth to the backend.
 - I need to work on the behavior of the backend when it loses access to the database.
+- Add and index to the database (city name and time)
+- Write migrations instead of depending one one script to generate the database.
